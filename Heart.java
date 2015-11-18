@@ -30,7 +30,8 @@ public class Heart {
 		// TODO Auto-generated method stub
 		Heart beta = new Heart();
 		beta.setCards("6H 8C 7C 2S 3D");
-		beta.multiplicity();  //runs the method to make sure the multiplicity method is set correctly.
+		beta.multiplicity(); // runs the method to make sure the multiplicity
+								// array is set correctly.
 		System.out.println(beta.getHand());
 	}
 
@@ -38,6 +39,18 @@ public class Heart {
 		cards = t.split(" ");
 		System.out.println(Arrays.toString(cards));
 		// if(cards[0].substring(0, cards[0].length()-1))
+
+		// I chose to use 5 try catch loops in order to set the card number
+		// variables, and the nums array. this was centered around the
+		// Integer.parseInt method so that it tries to parse the substring of
+		// the card from the beginning of the specific card to the end of the
+		// cards length-1. if this fails, meaning that the "number" of the card
+		// is not an actual numeric value, the try catch then checks if the
+		// letter/number is equal to specific letters, and then sets the
+		// variable to the value manually. this process is then repeated 5x, one
+		// time for each card. the code is organized in such a fashion that it
+		// deals with each card at once, rather than doing all of the numbers,
+		// and then all of the suits.
 		try {
 			cn1 = Integer.parseInt(cards[0].substring(0, cards[0].length() - 1));
 		} catch (NumberFormatException e) {
@@ -53,6 +66,11 @@ public class Heart {
 		}
 
 		nums[0] = cn1;
+		// this code to set the suit of the card is more simple. this just
+		// compares the suit part of the card to specific other strings in order
+		// to manually set the suit values for a specific value representing
+		// each suit. spades is 1, clubs is 2, diamonds is 3, hearts is 4. this
+		// is also repeated 5 times, once for each suit
 		if (cards[0].charAt(cards[0].length() - 1) == 'S') {
 			cs1 = 1;
 		} else if (cards[0].charAt(cards[0].length() - 1) == 'C') {
@@ -180,9 +198,11 @@ public class Heart {
 		// System.out.println(Arrays.toString(nums));
 		// System.out.println(Arrays.toString(suit));
 
-		Arrays.sort(nums);
-		Arrays.sort(suit);
-		Arrays.sort(cards);
+		Arrays.sort(nums); // makes sure all of the arrays are sorted from least
+		Arrays.sort(suit); // to greatest. this is very important for methods
+		Arrays.sort(cards); // such as the Straight or even multiplicity.
+		
+		
 
 		// System.out.println(Arrays.toString(nums));
 		// System.out.println(Arrays.toString(suit));
